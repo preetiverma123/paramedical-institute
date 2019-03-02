@@ -74,10 +74,10 @@ $route['apply-online'] = 'web/apply';
 
 $route['addApplication'] = 'web/addApplication';
 
-$route['competition-results'] = 'web/competition_results';
+$route['competition-results/(:any)'] = 'web/competition_results/$1';
 
 
-$route['courses'] = 'web/courses';
+$route['courses/(:any)'] = 'web/courses/$1';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 

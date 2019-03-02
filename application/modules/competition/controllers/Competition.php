@@ -40,7 +40,7 @@ class Competition extends MY_Controller {
     * ********************************************************** */
     public function index() {
 
-       
+       check_permission(VIEW);
         $this->data['competition_results'] = $this->competition_result->get_competition_results_list();
       
         $this->data['list'] = TRUE;
@@ -60,7 +60,7 @@ class Competition extends MY_Controller {
     public function add() {
 
      
-
+        check_permission(ADD);
         if ($_POST) {
             $this->_prepare_course_validation();
             if ($this->form_validation->run() === TRUE) {
@@ -103,7 +103,7 @@ class Competition extends MY_Controller {
     * ********************************************************** */
     public function edit($id = null) {
 
-      
+       check_permission(EDIT);
 
         if(!is_numeric($id)){
             error($this->lang->line('unexpected_error'));
@@ -160,7 +160,7 @@ class Competition extends MY_Controller {
     * ********************************************************** */
     public function view($competition_result = null) {
 
-       
+       check_permission(VIEW);
 
         if(!is_numeric($competition_result)){
              error($this->lang->line('unexpected_error'));
@@ -193,6 +193,7 @@ class Competition extends MY_Controller {
       
 
         $this->form_validation->set_rules('name', $this->lang->line('name'), 'trim|required');
+        $this->form_validation->set_rules('achiever_type', $this->lang->line('type'), 'trim|required');
         $this->form_validation->set_rules('course', $this->lang->line('course'), 'trim|required');
         $this->form_validation->set_rules('year', $this->lang->line('year'), 'trim|required');
         $this->form_validation->set_rules('roll_no', $this->lang->line('roll_no'), 'trim|required');
@@ -271,8 +272,8 @@ class Competition extends MY_Controller {
         $items[] = 'year';
         $items[] = 'roll_no';
         $items[] = 'rank';
-        $items[] = 'photo';
-        $items[] = 'status';
+        $items[] = 'achiever_type';
+       
 
         $data = elements($items, $_POST);
 
@@ -353,7 +354,7 @@ class Competition extends MY_Controller {
     * ********************************************************** */
     public function delete($id = null) {
 
-        
+        check_permission(DELETE);
         
         if(!is_numeric($id)){
              error($this->lang->line('unexpected_error'));

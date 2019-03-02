@@ -3,13 +3,14 @@
     <div class="header-top-area">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6 col-sm-6 col-xs-12 header-top">
+                <div class="col-md-8 col-sm-8 col-xs-12 header-top">
                     <p>
                         <a href="mailto:<?php echo $settings->email; ?>"><i class="fa fa-envelope"></i> <?php echo $settings->email; ?></a>
                         <a href="tel:<?php echo $settings->phone; ?>"><i class="fa fa-phone"></i> <?php echo $settings->phone; ?></a>
                     </p>
                 </div>
-                <div class="col-md-6 col-sm-6 col-xs-12">                            
+               
+                <div class="col-md-4 col-sm-4 col-xs-12">                            
                     <!-- <div class="top-menu">
                         <ul>
                             <li><a href="<?php echo site_url('admission'); ?>"><?php echo $this->lang->line('admission'); ?></a></li>
@@ -26,11 +27,14 @@
                         </ul>
                     </div> -->
                     <div class="top-menu">
+                        
                         <ul>
+                             <li><a href="<?php echo site_url('admission'); ?>"><?php echo $this->lang->line('admission'); ?></a></li>
+                            <li>|</li>
                             <li><a href="#careerModal" data-toggle="modal">Career</a></li>
                             <li>|</li>
-                            <li><a href="<?php echo site_url('apply-online'); ?>">Apply Online</a></li>
-                            <li>|</li>
+                            <!-- <li><a href="<?php echo site_url('apply-online'); ?>">Apply Online</a></li> -->
+                            <!-- <li>|</li> -->
                             <?php if (logged_in_user_id()) { ?>       
                             <li><a href="<?php echo site_url('dashboard'); ?>"><?php echo $this->lang->line('dashboard'); ?></a></li>
                             <li>|</li>
@@ -56,7 +60,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <div class="career-modal-head">
                         <img src="<?php echo UPLOAD_PATH; ?>/logo/<?php echo $settings->logo;?>" alt="" />
-                        <h3>Origin Career Institute</h3>
+                        <h3>National Institute Of Paramedical Sciences</h3>
                     </div>
                     
                 </div>
@@ -106,6 +110,7 @@
                 <div class="col-lg-4">
                     <div class="logo">
                         <a href="<?php echo site_url(); ?>"><img src="<?php echo UPLOAD_PATH; ?>/logo/<?php echo $settings->logo;?>" alt="" />
+                        <h3>National Institute<br>Of Paramedical Sciences</h3>
                             <!-- <a><span>B</span>al <span>V</span>idya <span>M</span>andir</a> -->
                         </a>
                     </div>
@@ -145,47 +150,65 @@
                                         <li><a href="<?php echo site_url('holiday'); ?>"><?php echo $this->lang->line('holiday'); ?></a></li>
                                     </ul>
                                 </li>
-                                <!-- <li><a href="javascript:void(0);"><?php echo $this->lang->line('about'); ?></a></li> -->
+                                <li><a href="javascript:void(0);">Facility</a></li>
                                 <!-- about -->
                                 <li><a href="javascript:void(0);" class="hidemenu">About Us <i class="fa fa-caret-down"></i></a>                                       
                                     <ul class="submenu">
-                                        <li><a href="<?php echo site_url('about/origin'); ?>">Origin</a></li>
-                                        <li><a href="<?php echo site_url('about/director-message'); ?>">Director's Message</a></li>
+                                        <li><a href="<?php echo site_url('about/about-us'); ?>">About NIOPS</a></li>
                                         <li><a href="<?php echo site_url('about/success-story'); ?>">Success Story</a></li>
-                                        <li><a href="<?php echo site_url('about/why-origin'); ?>">Why Origin</a></li>
+                                        <li><a href="<?php echo site_url('about/mission'); ?>">Our Mission</a></li>
+                                        <li><a href="<?php echo site_url('about/vision'); ?>">Our Vision</a></li>
+                                        <li><a href="<?php echo site_url('about/faculty'); ?>">Our Faculty</a></li>
+                                        <li><a href="<?php echo site_url('about/director-message'); ?>">Director's Message</a></li>
+                                         <li><a href="<?php echo site_url('about/admission'); ?>">Admission Procedure</a></li>
+                                        
+                                       
+                                        
+                                       
                                     </ul>
                                 </li>
                                 <!-- end about -->
-                                 <li class="courseMenu"><a href="<?php echo site_url('courses'); ?>" class="hidemenu1">Course <i class="fa fa-caret-down"></i></a>                                       
+                                 <li class="courseMenu"><a href="javascript:void(0);" class="hidemenu1">Course <i class="fa fa-caret-down"></i></a>                                       
                                     <ul class="submenu submenu-course clearfix">
-                                        <li class="inline-items-menu"><a href="javascript:void(0);" class="course-dropdown">Target Course</a>
+                                        <li class="inline-items-menu"><a href="javascript:void(0);" class="course-dropdown">Our Courses</a>
+
                                             <ul class="course-dropdown-sub">
-                                                <li><a href="javascript:void(0);">JEE (Mains + Advanced)</a></li>
-                                                <li><a href="javascript:void(0);">JEE (Mains)</a></li>
-                                                <li><a href="javascript:void(0);">NEET/AIIMS/JIPMER</a></li>
-                                            </ul>
-                                        </li class="inline-items-menu">
-                                        <li class="inline-items-menu"><a href="javascript:void(0);" class="course-dropdown">Academic Course</a>
-                                            <ul class="course-dropdown-sub">
-                                                <li><a href="javascript:void(0);">Prefoundation</a></li>
-                                                <li><a href="javascript:void(0);">Foundation</a></li>
-                                                
+                                                <?php foreach($courses as $course){?>
+                                                    <li><a href="<?php echo site_url().'courses/'.$course->id; ?>"><i class="fa fa-chevron-right"></i> <?php echo $course->name;?></a>
+                                                       <!--  <ul class="course-dropdown-sub">
+                                                            <?php foreach($courses as $course){?>
+                                                                <?php if($course->type=='target'){ ?>
+                                                                    <?php if($course->stream!=NULL && $course->stream=='engineering'){?>
+                                                                        <li><a href="<?php echo site_url().'courses/'.$course->id; ?>"><i class="fa fa-chevron-right"></i><?php echo $course->name;?></a></li>
+                                                               
+                                                                    <?php }?>
+                                                                 <?php }?>
+                                                            <?php }?>
+                                                        </ul> -->
+
+
+
+
+
+                                                    </li>
+                                                <?php }?>
+
+                                                      
+
+                                             
+                                                  
+                                                    
                                             </ul>
                                         </li>
-                                        <li class="inline-items-menu"><a href="javascript:void(0);" class="course-dropdown">Special Course</a>
-                                            <ul class="course-dropdown-sub">
-                                                <li><a href="javascript:void(0);">KVPY</a></li>
-                                                <li><a href="javascript:void(0);">OLYMPIAD</a></li>
-                                                <li><a href="javascript:void(0);">NTSC</a></li>
-                                            </ul>
-                                        </li>
+                                        
                                     </ul>
                                 </li>
-
-                               <!--  <li><a href="<?php echo site_url('competition-results'); ?>"><?php echo $this->lang->line('competition-results'); ?></a></li> -->
-                                <li><a href="<?php echo 'competition-results'?>">Results</a></li>
-                                <!-- <li><a href="javascript:void(0);"><?php echo $this->lang->line('teacher'); ?></a></li>
-                                <li><a href="javascript:void(0);"><?php echo $this->lang->line('staff'); ?></a></li> -->
+                                 <li><a href="<?php echo site_url('staff'); ?>">Our Team</a></li>
+                                 <li><a href="<?php echo site_url('galleries'); ?>"><?php echo $this->lang->line('gallery'); ?></a></li>
+                              
+                             
+                                 <li><a href="<?php echo site_url('teachers'); ?>"><?php echo 'Our Teachers'; ?></a></li>
+                                <!--<li><a href="javascript:void(0);"><?php echo $this->lang->line('staff'); ?></a></li> -->
                                
                                 <li><a href="<?php echo site_url('contact'); ?>"><?php echo $this->lang->line('contact_us'); ?></a></li>
                                 

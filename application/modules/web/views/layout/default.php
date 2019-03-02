@@ -9,8 +9,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
        <!--  <title><?php echo $title_for_layout; ?></title> -->
-        <title><?php echo $settings->school_name;?></title>
-        
+        <!-- <title><?php echo $settings->school_name; ?></title> -->
+        <title><?php echo $settings->school_name; ?></title>
       <!--   <link rel="icon" href="<?php echo IMG_URL; ?>favicon.png" type="image/x-icon" /> -->
          <link rel="icon" href="<?php echo UPLOAD_PATH; ?>logo/logo.png" type="image/x-icon" />
         <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i" rel="stylesheet">

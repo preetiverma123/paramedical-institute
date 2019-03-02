@@ -100,13 +100,13 @@ ul {
     padding: 0px;
 }
 li {
-    list-style: none
+    /*list-style: none*/
 }
 p {
     font-size: 14px;
     font-weight: normal;
-    line-height: 24px;
-    color: #7e7e7e;
+    line-height: 25px !important;
+    color: #000000;
     margin-bottom: 15px;
 }
 hr {
@@ -207,16 +207,30 @@ label {
 }
 .logo img{
     /* padding-top: 4px; */
-    max-width: 62px;
+    max-width: 61px;
+    height:67px;
+    padding: 4px 4px 5px 4px;
 }
 
 /* Menu Area start  */
 .main-menu {
     text-align: right;
-    margin-top: 6px;
+    /*margin-top: 6px;*/
 }
 .main-menu ul li ul.submenu li a:hover{
     color: #000 !important;
+}
+.logo h3 {
+    color: #d51c1f;
+    font-size: 16px;
+    /* float: left; */
+    padding-left: 5px;
+    line-height: 22px;
+    margin-bottom: 0;
+    font-weight: 800;
+}
+.panel.panel-head .panel-heading h3{
+    font-size:15px;
 }
 .pb-4, .py-4 {
     padding-bottom: 1.5rem!important;
@@ -234,13 +248,14 @@ label {
     color: #222222;
     display: block;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 13px;
     /* font-size: 14px; */
-    padding: 23px 8px 20px;
+    padding: 27px 8px 20px;
     /*text-transform: uppercase;*/
 } 
 #contact-section{
     padding: 60px 0;
+    border-top: 1px solid #d51c1f;
 }
 .contact-form input{
     height: 40px;
@@ -329,34 +344,35 @@ label {
 }
 .about-school .owl-carousel .owl-nav{
     display: block;
-    top: -30px;
+    top: -31px;
+    /* height: 20px; */
 }
 .about-school .owl-carousel .owl-prev:before {
     content: "\f053";
-    font-size: 15px;
+    font-size: 11px;
     color: #fff;
     right: 35px;
     border:1px solid transparent;
     padding: 5px 5px 2px;
-    background-color: #f3861f;
+    background-color: #f33c1f;
     font-family: fontAwesome;
     position: absolute;
 }
 .about-school .owl-carousel .owl-next:before {
     content: "\f054";
-    font-size: 15px;
+    font-size: 11px;
     color: #fff;
     border:1px solid transparent;
     padding: 5px 5px 2px;
-    background-color: #f3861f;
+    background-color: #f33c1f;
     font-family: fontAwesome;
     position: absolute;
 }
 .about-school .owl-carousel .owl-prev:hover:before {
     content: "\f053";
     font-size: 15px;
-    color: #f3861f;
-    border:1px solid #f3861f;
+    color: #f33c1f;
+    border:1px solid #f33c1f;
     right: 35px;
     padding: 5px 5px 2px;
     background-color: #fff;
@@ -366,8 +382,8 @@ label {
 .about-school .owl-carousel .owl-next:hover:before {
     content: "\f054";
     font-size: 15px;
-    color: #f3861f;
-    border:1px solid #f3861f;
+    color: #f33c1f;
+    border:1px solid #f33c1f;
     padding: 5px 5px 2px;
     background-color: #fff;
     font-family: fontAwesome;
@@ -383,7 +399,7 @@ label {
 .owl-carousel .owl-prev:before{
     content:"\f053";
     font-size: 30px;
-    color: #f3861f;
+    color: #f33c1f;
     font-family: fontAwesome;
     position: absolute;
 }
@@ -391,7 +407,7 @@ label {
 .owl-carousel .owl-next:before{
    content: "\f054";
     font-size: 30px;
-    color: #f3861f;
+    color: #f33c1f;
     right: 8px;
     /* left: auto; */
     font-family: fontAwesome;
@@ -411,7 +427,7 @@ label {
     height: 10px;
     border-radius: 50%;
     width: 10px;
-    background-color: #f3861f;
+    background-color: #f33c1f;
 }
 .owl-carousel .owl-dot span {
     display: block;
@@ -478,20 +494,57 @@ label {
 }
 .notice-single{
     border-right: none;
-    margin: 0 30px;
+    /*margin: 0 30px;*/
     text-align: center;
     box-shadow: 0 2px 5px 0 #00000014;
     background: #fff3f3;
 }
+.d_papers:before, .d_papers:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-transform: rotateZ(2.5deg);
+    -o-transform: rotate(2.5deg);
+    transform: rotateZ(2.5deg);
+    z-index: -1;
+}
+.d_papers:after {
+    -webkit-transform: rotateZ(-2.5deg) !important;
+    -o-transform: rotate(-2.5deg) !important;
+    transform: rotateZ(-2.5deg) !important;
+}
+
+.d_papers, .d_papers:before, .d_papers:after {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.1), 1px 1px 3px rgba(0,0,0,0.2);
+}
+.d_papers {
+    position: relative;
+    width: 90%;
+    padding: 1em 1em 0;
+    margin: 0px auto;
+    /*margin-top: 40px;*/
+}
+ul.static-links li {
+    list-style: none;
+}
+.addmissionImage {
+    /* padding: 10px; */
+}
 .notice-single .notice-title h2{
     font-size: 18px;
     line-height: 1.5;
-    color: #f3861f;
+    color: #f33c1f;
     font-weight: 600;
 }
 .notice-single .notice-title h3{
     font-size: 13px;
-    font-weight: 300;
+    font-weight: 700;
+    color: #000000;
     font-style: italic;
 }
 .notice-single .notice-icon {
@@ -672,13 +725,13 @@ nav{
 }
 button.btn.btn-primary.btn-blue {
     padding: 13px 30px;
-    background: #f3861f;
-    border: 1px solid #f3861f;
+    background: #f33c1f;
+    border: 1px solid #f33c1f;
 }
 .contact-form button.btn.btn-primary.btn-blue {
     padding: 13px 30px;
-    background: #f3861f;
-    border: 1px solid #f3861f;
+    background: #f33c1f;
+    border: 1px solid #f33c1f;
 }
 .right-pane{
     padding: 10px;
@@ -804,14 +857,14 @@ button.btn.btn-primary.btn-blue {
 
 .gallery-section {
     padding: 60px 0;
-    border-top:2px solid #f3861f;
-    border-bottom:2px solid #f3861f;
+    border-top:2px solid #f33c1f;
+    border-bottom:2px solid #f33c1f;
 }
 .gallerydiv .gallery-item a {
     position: absolute;
     width: 50px;
     height: 50px;
-    background: #f3861f;
+    background: #f33c1f;
     color: #fff;
     left: 50%;
     top: 60%;
@@ -858,7 +911,7 @@ button.btn.btn-primary.btn-blue {
 
 .event-area{
     padding-top: 40px;
-    /*border-top:1px solid #f3861f; */
+    /*border-top:1px solid #f33c1f; */
     /*background: #ebf0f4;*/
     padding-bottom: 70px;
 }
@@ -1015,7 +1068,7 @@ button.btn.btn-primary.btn-blue {
 }
 
 .profile-details h4{
-    background: #f3861f;
+    background: #f33c1f;
     padding: 5px;
     font-size: 20px;
     margin: 0 20px;
@@ -1091,10 +1144,10 @@ button.btn.btn-primary.btn-blue {
     font-size: 18px;
 }
 #careerModal button {
-    background: #f3861f;
+    background: #f33c1f;
     /* padding-left: 10px; */
     margin-left: 15px;
-    border: 1px solid #f3861f;
+    border: 1px solid #f33c1f;
 }
 .career-modal .btn-default:hover{
     background-color: transparent;
@@ -1139,6 +1192,7 @@ button.btn.btn-primary.btn-blue {
     .main-menu ul li {
         display: block;
         text-align: left;
+        padding: 27px 8px 20px 0;
     }
     .main-menu ul li a {
         padding: 10px 8px;
@@ -1157,7 +1211,7 @@ button.btn.btn-primary.btn-blue {
     }
     .main-menu ul li.manutoggle {
         position: absolute;
-        top: -62px;
+        top: -80px;
         font-size: 24px;
         right: 10px;
         display: block;
@@ -1202,6 +1256,7 @@ button.btn.btn-primary.btn-blue {
         display: none;
         text-align: left;
     }
+    
     
     
     .col-xl-9.static {
@@ -1257,7 +1312,7 @@ button.btn.btn-primary.btn-blue {
     }
     .main-menu ul li.manutoggle {
         position: absolute;
-        top: -56px;
+        top: -50px;
         right: 10px;
         display: block;
     }
@@ -1308,6 +1363,24 @@ button.btn.btn-primary.btn-blue {
     .logo a {
         font-size: 20px !important;
     }
+    #contact-section{
+        padding:30px 0 20px;
+    }
+    .section-testimonial{
+        padding: 30px 0 !important;
+    }
+    footer{
+        padding-top: 20px;
+    }
+    .message-content p{
+        height: unset !important;
+    }
+    .moved-text marquee{
+        padding: 5px !important;
+    }
+    .moved-text {
+        height: 19px !important;
+    }
     ul.submenu{
         display: none;
     }
@@ -1318,7 +1391,7 @@ button.btn.btn-primary.btn-blue {
         padding: 0 15px;
     }
     .mainmenu.responsive{
-        border-top: 1px solid #f3861f;
+        border-top: 1px solid #f33c1f;
     }
     .main-menu ul li ul.submenu li a{
         padding: 10px 15px;
@@ -1327,12 +1400,12 @@ button.btn.btn-primary.btn-blue {
         padding-bottom: 30px;
     }
     ul.submenu-course{
-        left: 5% !important;
+        left: 4% !important;
         display: none;
         height: 200px;
          overflow-y: scroll;
         width: 90% !important;
-        top: 70% !important;
+        top: 57% !important;
     }
     ul.submenu-course .inline-items-menu{
         float: unset !important;
@@ -1398,7 +1471,15 @@ button.btn.btn-primary.btn-blue {
     .q-links{
         /*padding-left: 20px;*/
     }
-    
+    section.messageContainer {
+        padding:0 0 50px !important;
+    }
+    .video-single{
+        margin-top: 50px;
+    }
+    .gallery-section{
+        padding:30px 0;
+    }
     section.padding-btm {
         padding: 50px 0;
     }

@@ -17,7 +17,7 @@
                     }
 
                 ?>
-                <span><?php  echo $row['school_name']; ?></span>
+               <!-- <span><?php  echo $row['school_name']; ?></span>-->
                <!--  <img class="logo" src="<?php echo IMG_URL; ?>/sms-logo-50.png"> -->
                <img class="logo" src="<?php echo UPLOAD_PATH; ?>/logo/<?php echo $row['logo']; ?>">
 
@@ -55,7 +55,7 @@
                         <li><a  href="<?php echo site_url('language'); ?>"><i class="fa fa-language"></i> <?php echo $this->lang->line('language'); ?></a></li>
                     <?php } ?> -->
                     
-                 <!--    <?php if(has_permission(VIEW, 'administrator', 'year') || has_permission(VIEW, 'administrator', 'role') || has_permission(VIEW, 'administrator', 'permission') || has_permission(VIEW, 'administrator', 'user') || has_permission(EDIT, 'administrator', 'password') || has_permission(VIEW, 'administrator', 'backup')){ ?>    
+                   <!--  <?php if(has_permission(VIEW, 'administrator', 'year') || has_permission(VIEW, 'administrator', 'role') || has_permission(VIEW, 'administrator', 'permission') || has_permission(VIEW, 'administrator', 'user') || has_permission(EDIT, 'administrator', 'password') || has_permission(VIEW, 'administrator', 'backup')){ ?>    
                         <li><a><i class="fa fa-user"></i> <?php echo $this->lang->line('administrator'); ?> <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                                 <?php if(has_permission(VIEW, 'administrator', 'year')){ ?>   
@@ -80,7 +80,7 @@
                         </li>
                     <?php } ?>  -->
                     
-              <!--       <?php if(has_permission(VIEW, 'hrm', 'designation') || has_permission(VIEW, 'hrm', 'employee')){ ?>    
+                     <?php if(has_permission(VIEW, 'hrm', 'designation') || has_permission(VIEW, 'hrm', 'employee')){ ?>    
                     <li><a><i class="fa fa-user-md"></i> <?php echo $this->lang->line('human_resource'); ?> <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <?php if(has_permission(VIEW, 'hrm', 'designation')){ ?>   
@@ -92,8 +92,8 @@
                         </ul>
                     </li> 
                     <?php } ?>
-                    -->
-                    <?php if(has_permission(VIEW, 'teacher', 'teacher')){ ?>
+                    
+                   <?php if(has_permission(VIEW, 'teacher', 'teacher')){ ?>
                         <li><a href="<?php echo site_url('teacher'); ?>"><i class="fa fa-users"></i> <?php echo $this->lang->line('teacher'); ?></a> </li>  
                     <?php } ?>
                     
@@ -480,14 +480,29 @@
                     </li>  
                     <?php } ?>
 
-                   
-                    <li><a href="<?php echo site_url('course'); ?>"><i class="fa fa-desktop"></i><?php echo 'Courses' ?></a>
-                   
-                    </li>  
+                    <?php if(has_permission(VIEW, 'course', 'course') || has_permission(VIEW, 'course', 'course')){ ?>
+                        <li><a href="<?php echo site_url('course'); ?>"><i class="fa fa-desktop"></i><?php echo 'Courses' ?></a>
+                       
+                        </li>  
+                    <?php } ?>
+                     <!--<?php if(has_permission(VIEW, 'competition', 'competition') || has_permission(VIEW, 'competition', 'competition')){ ?>
                      <li><a href="<?php echo site_url('competition'); ?>"><i class="fa fa-desktop"></i><?php echo 'Competition Results' ?></a>
                    
                     </li>  
-                  
+                    <?php } ?>-->
+
+                     <!--<?php if(has_permission(VIEW, 'review', 'review')){ ?>
+                     <li><a href="<?php echo site_url('review'); ?>"><i class="fa fa-desktop"></i><?php echo 'Reviews' ?></a>
+                   
+                    </li>  
+                    <?php } ?>-->
+                    
+                    <?php if(has_permission(VIEW, 'facility', 'facility')){ ?>
+                        <li>
+                            <a href="<?php echo site_url('facility'); ?>"><i class="fa fa-desktop"></i><?php echo 'Facilities' ?></a>
+                       
+                        </li>  
+                    <?php } ?>
                     
                     <li><a><i class="fa fa-lock"></i><?php echo $this->lang->line('profile'); ?> <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">

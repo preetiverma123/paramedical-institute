@@ -938,7 +938,7 @@ if (!function_exists('check_permission')) {
         $module_slug = 'my_' . $module_slug;
 
         $data = $ci->config->item($operation_slug, $module_slug);
-
+        
         $result = $data[$role_id];
         if (!empty($result)) {
             $array = explode('|', $result);

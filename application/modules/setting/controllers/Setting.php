@@ -133,6 +133,7 @@ class Setting extends MY_Controller {
         $this->form_validation->set_rules('address', $this->lang->line('address'), 'trim|required');
         $this->form_validation->set_rules('phone', $this->lang->line('phone'), 'trim|required');
         $this->form_validation->set_rules('email', $this->lang->line('email'), 'trim|required');
+         $this->form_validation->set_rules('email_password', 'Email Password', 'trim|required');
         $this->form_validation->set_rules('currency', $this->lang->line('currency'), 'trim|required');
         $this->form_validation->set_rules('currency_symbol', $this->lang->line('currency_symbol'), 'trim|required');
         $this->form_validation->set_rules('language', $this->lang->line('language'), 'trim|required');
@@ -156,6 +157,7 @@ class Setting extends MY_Controller {
         $items[] = 'address';
         $items[] = 'phone';
         $items[] = 'email';
+        $items[] = 'email_password';
         $items[] = 'currency';
         $items[] = 'currency_symbol';
         $items[] = 'language';

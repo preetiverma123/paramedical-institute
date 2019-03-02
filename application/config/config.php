@@ -24,7 +24,7 @@ date_default_timezone_set('Asia/Kolkata');
 |
 */
  
-$config['base_url'] =  'http://localhost/paramedical-institute';
+$config['base_url'] =  'http://niops.in/';
 
 
 /*
@@ -561,7 +561,7 @@ define('EDIT', '1');
 define('VIEW', '2');
 define('DELETE', '3');
 
-define('SMS', 'Coaching Institute');
+define('SMS', 'NIOPS');
 
 
 

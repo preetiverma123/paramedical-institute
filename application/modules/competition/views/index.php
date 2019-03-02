@@ -142,7 +142,20 @@
                                     </div>
                                 </div>
                             
-                                
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="type"><?php echo $this->lang->line('type'); ?> <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <select class="form-control col-md-7 col-xs-12"  name="achiever_type"  id="type" placeholder="<?php echo $this->lang->line('type'); ?>" required="required">
+                                            <option value="" >Select Achiever Type</option>
+                                            <option value="tenth_class" <?php if(isset($post['achiever_type']) && $post['type']=="tenth_class"){ echo 'selected';}?> >X Class Achiever </option>
+                                            <option value="twelveth_class" <?php if(isset($post['achiever_type']) && $post['type']=="twelveth_class"){ echo 'selected';}?> > XII Class Achiever </option>
+                                            <option value="neet" <?php if(isset($post['achiever_type']) && $post['type']=="neet"){ echo 'selected';}?> > NEET Achiever</option>
+                                            <option value="iit" <?php if(isset($post['achiever_type']) && $post['type']=="iit"){ echo 'selected';}?> > IIT Achiever</option>
+                                        </select>
+                                        <div class="help-block"><?php echo form_error('type'); ?></div>
+                                    </div>
+                                </div>
                                                                 
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12"><?php echo $this->lang->line('photo'); ?>
@@ -240,6 +253,24 @@
                                     </div>
                                 </div>
                                 
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="type"><?php echo $this->lang->line('type'); ?> <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <select class="form-control col-md-7 col-xs-12"  name="achiever_type"  id="type" placeholder="<?php echo $this->lang->line('type'); ?>" required="required">
+                                            <option value="" >Select Achiever Type</option>
+
+                                            <option value="tenth_class" <?php if(isset($competition_result->achiever_type) && $competition_result->achiever_type=="tenth_class"){ echo 'selected';}?> >X Class Achiever </option>
+                                            <option value="twelveth_class" <?php if(isset($competition_result->achiever_type) && $competition_result->achiever_type=="twelveth_class"){ echo 'selected';}?> > XII Class Achiever </option>
+
+                                            <option value="neet" <?php if(isset($competition_result->achiever_type) && $competition_result->achiever_type=="neet"){ echo 'selected';}?> > NEET Achiever</option>
+
+                                            <option value="iit" <?php if(isset($competition_result->achiever_type) && $competition_result->achiever_type=="iit"){ echo 'selected';}?> > IIT Achiever</option>
+                                        </select>
+                                        <div class="help-block"><?php echo form_error('type'); ?></div>
+                                    </div>
+                                </div>
+
                                 <div class="ln_solid"></div>
                                 <div class="form-group">
                                     <div class="col-md-6 col-md-offset-3">
@@ -290,7 +321,14 @@
                                     : <?php echo $competition_result->rank; ?>
                                     </div>
                                 </div>
-                                                              
+                                
+                                <div class="item form-group">
+                                    <label class="col-md-3 col-sm-3 col-xs-4"><?php echo 'Achiever Type'; ?></label>
+                                    <div class="col-md-9 col-sm-9 col-xs-8">
+                                    : <?php echo $competition_result->achiever_type; ?>
+                                    </div>
+                                </div>
+
                                 <div class="item form-group">
                                     <label class="col-md-3 col-sm-3 col-xs-4"><?php echo $this->lang->line('photo'); ?></label>
                                     <div class="col-md-9 col-sm-9 col-xs-8">

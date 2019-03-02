@@ -1,18 +1,12 @@
- 
 <section class="slider_area">
-  <div class="container-fluid">
+  <div class="container">
   <div class="row">
     <div class="col-md-8">
       <div class="slider-left">
         <div class="owl-carousel" id="slider_area">
-         <!--  <div class="item">
-            <img src="assets/uploads/slider/banner2.jpg" class="img-responsive" alt="slider">
-            <div class="overlay"></div> -->
             <?php $slider_str = ''; 
             foreach($sliders as $obj){ ?>
               <?php $slider_str = "assets/uploads/slider/".$obj->image; 
-
-
               ?>
                 <div class="item">
                   <img src="<?php echo  $slider_str;?>" class="img-responsive" alt="slider">
@@ -36,57 +30,71 @@
         </div>
       <div class="col-md-4">
         <div class="panel panel-head">
-          <div class="panel-heading"><h3 class="panel-title">Admission Paramedical</h3></div>
+          <div class="panel-heading"><h3 class="panel-title">Admission @ National Institute Of Paramedicals</h3></div>
         </div>
-        <div class="scrollDiv scroll-wrapper list-group scrollbar-macosx" style="position: relative;">
-          <ul class="list-group  scrollbar-macosx scroll-content scroll-scrolly_visible" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 340px;">
-            <li class="list-group-item">
-              <i class="fa fa-caret-right"></i>Admission Course
-            
-              <ul class="style-course">
-                <li>
-                  <a href="javascript:void(0);">
-                  <b> <i class="fa fa-caret-right"></i>JEE(Main + advanced)</b>
-                  <br>
-                  (Class XII<sup>th</sup> passout)
-                </a>
+
+        <div class="scrollDiv scroll-wrapper list-group" style="position: relative;">
+          <div class="scrollbar" id="style-3">
+            <div class="force-overflow">
+              <ul class="list-group force_overflow" style="height: auto; margin-bottom: 0px; margin-right: 0px;">
+                <li class="list-group-item">
+                  <i class="fa fa-caret-right"></i>Admission Courses
+                
+                  <ul class="style-course">
+                    <?php if(!empty($courses)){?>
+                      <?php foreach($courses as $course){?>
+                        <li>
+                          <a href="<?php echo site_url().'courses/'.$course->id; ?>">
+                            <b> <i class="fa fa-caret-right"></i><?php echo (!empty($course->name))?$course->name:'';?></b>
+                            <br>
+                            <?php echo (!empty($course->class_description))?$course->class_description:'';?>
+                          </a>
+                        </li>
+                      <?php }?>
+                    <?php }?>
+                   
+                  </ul>
+
                 </li>
-                <li>
-                  <a href="javascript:void(0);">
-                  <b> <i class="fa fa-caret-right"></i>NEET/AIIMS</b>
-                  <br>
-                  (Class XII<sup>th</sup> passout)
-                </a>
-                </li>
-                <li>
-                  <a href="javascript:void(0);">
-                  <b> <i class="fa fa-caret-right"></i>Foundation</b>
-                  <br>
-                  (Class XI<sup>th</sup> & XII<sup>th</sup>)
-                </a>
-                </li>
-                 <li>
-                  <a href="javascript:void(0);">
-                  <b> <i class="fa fa-caret-right"></i>Prefoundation</b>
-                  <br>
-                  (Class VIII<sup>th</sup> & IX<sup>th</sup> & X<sup>th</sup>)
-                </a>
-                </li>
-               
+
+               <!--  <li class="list-group-item">
+                  <i class="fa fa-caret-right"></i>Admission Announcement
+                
+                  <ul class="style-course">
+                    <li>
+                      <a href="javascript:void(0);">
+                      <b> <i class="fa fa-caret-right"></i>JEE(Main + advanced)</b></a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0);">
+                      <b> <i class="fa fa-caret-right"></i>JEE(Main + advanced)</b></a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0);">
+                      <b> <i class="fa fa-caret-right"></i>JEE(Main + advanced)</b></a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0);">
+                      <b> <i class="fa fa-caret-right"></i>JEE(Main + advanced)</b></a>
+                    </li>
+                  </ul>
+                </li> -->
+             
               </ul>
-            </li>         
-          </ul>
+          </div>
+        </div>
         </div>
       </div>
     </div>
   </div>
+ 
 </section>
 <section class="messageContainer padding-btm" id="message-section">
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-8">
         <div class="go-heading go-lined">
-          <h3 class="title-section1"><span style="color:#f3861f;">About</span> Paramedical</h3>
+          <h3 class="title-section1"><span style="color:#f33c1f;">About</span> NIOPS</h3>
         </div>
           <div class="directorWrapper">
            <div class="row go-directors">
@@ -114,11 +122,11 @@
               </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-6 col-sm-6">
               <div class="go-box-wrap our-direct bg-light">
                 <div class="block-title">
                   <h2>
-                      <span>Executive's Message</span>
+                      <span>Principal's Message</span>
                   </h2>
                 </div> 
                <img src="assets/uploads/page/<?php echo $executive_message->page_image;?>" width="200px" height="210px" alt="director">
@@ -130,7 +138,6 @@
                 $this->load->helper('text');
                 $desc= strip_tags($executive_message->page_description);
                 echo word_limiter($desc,15);
-
                 ?>
                 </p>
               </div>
@@ -153,38 +160,64 @@
                      
 
                       <div class="row">
-                        <div class="notice-single col-lg-12">
-                         <div class="owl-carousel" id="notice-board">
-                            
-                          <?php foreach($notices as $obj){ ?>  
-                             <div class="item">             
-                              <div class="notice-title">
-                                  <h2><?php echo $obj->title; ?></h2>
-                                  <h3><i class="fa fa-calendar"></i>  <?php echo date('M j, Y', strtotime($obj->date)); ?> </h3>
+                        <div class="col-lg-12">
+                          <div class="notice-single d_papers">
+                            <div class="owl-carousel" id="notice-board">
+                                
+                              <?php foreach($notices as $obj){ ?>  
+                                 <div class="item">             
+                                  <div class="notice-title">
+                                      <h2><?php echo $obj->title; ?></h2>
+                                      <h3><i class="fa fa-calendar"></i>  <?php echo date('M j, Y', strtotime($obj->date)); ?> </h3>
+                                  </div>
+                                  <div>
+                                      <p><?php echo substr($obj->notice, 0,120); ?>...</p>
+                                  </div>
+                                  <div class="more-link"><a href="<?php echo site_url('notice-detail/').$obj->id; ?>" class="btn-link"><?php echo $this->lang->line('read_more'); ?> <i class="fa fa-long-arrow-right"></i></a></div>
+                                  </div>
+                              <?php } ?>  
+                            </div> 
+                          </div>  
+                        </div>
+                      <div class="col-lg-12">
+                        <div class="video-single d_papers">
+                          <div class="about-school">
+                            <div class="addmission-board">
+                              <span>A</span>dmission <span>O</span>pen
+                            </div>
+                            <div class="owl-carousel" id="addmission-board">
+                              <div class="item">
+                                <div class="addmissionImage">
+                                  <img src="assets/images/addmission-2.jpg" alt="admission">
+                                </div>
                               </div>
-                              <div>
-                                  <p><?php echo substr($obj->notice, 0,120); ?>...</p>
-                              </div>
-                              <div class="more-link"><a href="<?php echo site_url('notice-detail/').$obj->id; ?>" class="btn-link"><?php echo $this->lang->line('read_more'); ?> <i class="fa fa-long-arrow-right"></i></a></div>
-                              </div>
-                          <?php } ?>  
-                        </div>   
-                      </div>
-                      <div class="video-single col-lg-12">
-                        <div class="about-school">
-                          <div class="addmission-board">
-                            <span>A</span>dmission <span>O</span>pen
-                          </div>
-                          <div class="owl-carousel" id="addmission-board">
-                            <div class="item">
-                              <div class="addmissionImage">
-                                <img src="assets/images/addmission-2.jpg" alt="admission">
+                              <div class="item">
+                                <div class="addmissionImage">
+                                  <img src="assets/images/addmission-1.jpg" alt="admission">
+                                </div>
                               </div>
                             </div>
-                            <div class="item">
-                              <div class="addmissionImage">
-                                <img src="assets/images/addmission-1.jpg" alt="admission">
-                              </div>
+                          </div>
+                        </div>  
+                      </div>
+                      <div class="col-lg-12">
+                        <div class="video-single d_papers">
+                          <div class="about-school">
+                            <div class="addmission-board">
+                              <span>F</span>acilities 
+                            </div>
+                            <div class="facilityProvide">
+                              <ul>
+                                <li><i class="fa fa-check-square-o" aria-hidden="true"></i>Yoga facility</li>
+                                <li><i class="fa fa-check-square-o" aria-hidden="true"></i>Canteen facility</li>
+                                <li><i class="fa fa-check-square-o" aria-hidden="true"></i>Bus facility</li>
+                                <li><i class="fa fa-check-square-o" aria-hidden="true"></i>Smart Classes</li>
+                                <li><i class="fa fa-check-square-o" aria-hidden="true"></i>Yoga facility</li>
+                                <li><i class="fa fa-check-square-o" aria-hidden="true"></i>Canteen facility</li>
+                              </ul>
+                              <div class="text-center btn_view pb-4">
+                              <a href="<?php echo site_url('facilities'); ?>" class="btn btn-sm btn-lng btn-outline-dark">View More</a>
+                            </div>
                             </div>
                           </div>
                         </div>  
@@ -198,57 +231,36 @@
       </div>
 
     </div>
-
-  
 </section>
 <!-- Gallery section -->
   <div class="gallery-section">
-    <div class="site-title">
-      <h3 class="title-section1">Gallery</h3>
-    </div>
-    <div class="gallerydiv">
-      <div class="grid-sizer"></div>
-      <?php if (isset($galleries) && !empty($galleries)) { ?>
-        <?php foreach($galleries as $obj){?>
-          <div class="gallery-item gi-big set-bg" data-setbg="<?php echo UPLOAD_PATH; ?>/gallery/<?php echo $obj->image; ?>">
-            <a class="img-popup" href="<?php echo site_url('gallery-image/'.$obj->id); ?>"><i class="ti-plus"></i></a>
-          </div>
+    <div class="container">
+      <div class="site-title">
+        <h3 class="title-section1">Gallery</h3>
+      </div>
+     <div class="row"> 
+      <div class="owl-carousel" id="galleryId">
+        <!-- <div class="grid-sizer"></div> -->
+        <?php if (isset($galleries) && !empty($galleries)) { ?>
+          <?php foreach($galleries as $obj){?>
+          <div class="item">
+            <!-- <div class="gallery-item gi-big set-bg" data-setbg="<?php echo UPLOAD_PATH; ?>/gallery/<?php echo $obj->image; ?>"> -->
+              <div class="galleryImg">
+                <a class="img-popup" href="<?php echo site_url('gallery-image/'.$obj->id); ?>">
+                <img src="<?php echo UPLOAD_PATH; ?>/gallery/<?php echo $obj->image; ?>" alt="person">
+                </a>
+                <!-- <a class="img-popup" href="<?php echo site_url('gallery-image/'.$obj->id); ?>"></a> -->
+              </div>
+            </div> 
+          <?php }?>
         <?php }?>
-      <?php }?>
-  <!--     <div class="gallery-item set-bg" data-setbg="assets/images/gallery1.jpg">
-        <a class="img-popup" href="assets/images/gallery1.jpg"><i class="ti-plus"></i></a>
-      </div>
-      <div class="gallery-item set-bg" data-setbg="assets/images/gallery2.jpg">
-        <a class="img-popup" href="assets/images/gallery2.jpg"><i class="ti-plus"></i></a>
-      </div>
-      <div class="gallery-item gi-long set-bg" data-setbg="assets/images/gallery3.jpg">
-        <a class="img-popup" href="assets/images/gallery3.jpg"><i class="ti-plus"></i></a>
-      </div>
-      <div class="gallery-item gi-big set-bg" data-setbg="assets/images/gallery4.jpg">
-        <a class="img-popup" href="assets/images/gallery4.jpg"><i class="ti-plus"></i></a>
-      </div>
-      <div class="gallery-item gi-long set-bg" data-setbg="assets/images/gallery5.jpg">
-        <a class="img-popup" href="assets/images/gallery5.jpg"><i class="ti-plus"></i></a>
-      </div>
-      <div class="gallery-item gi-long set-bg" data-setbg="assets/images/gallery8.jpg">
-        <a class="img-popup" href="assets/images/gallery8.jpg"><i class="ti-plus"></i></a>
-      </div>
-      <div class="gallery-item gi-long set-bg" data-setbg="assets/images/gallery10.jpg">
-        <a class="img-popup" href="assets/images/gallery8.jpg"><i class="ti-plus"></i></a>
-      </div>
-      <div class="gallery-item set-bg" data-setbg="assets/images/gallery6.jpg">
-        <a class="img-popup" href="assets/images/gallery6.jpg"><i class="ti-plus"></i></a>
-      </div>
-      <div class="gallery-item set-bg" data-setbg="assets/images/gallery7.jpg">
-        <a class="img-popup" href="assets/images/gallery7.jpg"><i class="ti-plus"></i></a>
-      </div> -->
-     
-     
+        </div>
+        </div>
     </div>
-  </div>
+ </div>
   <!-- Gallery section -->
 
-<!-- <?php if(isset($events) && !empty($events)){ ?>
+ <!-- <?php if(isset($events) && !empty($events)){ ?>
 <section id="events" class="event-area">
     <div class="container">
         <div class="row">
@@ -298,73 +310,86 @@
             </div>
         </div>
     </div>
-</section> --> 
+</section> -->
 
+<!-- our courses -->
+<!-- <section class="course-section" id="course-id">
+  <div class="container">
+    <div class="col-md-4 col-sm-6">
+      <div class="courseWrap">
+        <div class="courseImg">
+          <img src="" alt="course">
+        </div>
+        <div class="course-content">
+          
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-6">
+      <div class="courseWrap">
+        <div class="courseImg">
+          
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-6">
+      <div class="courseWrap">
+        <div class="courseImg">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
 
 
 <section class="fact-section spad set-bg" data-setbg="assets/images/background.jpg" style="background-image: url(assets/images/background.jpg);" id="move-counter">
     <div class="container">
       <div class="row">
-        <div class="col-md-6">
-          <div class="counter-content">
-            <h2 class="counter-title">Achievements</h2>
-            <div class="counterImage">
-              <img src="assets/images/achieve.jpg" alt="Achievements">
-            </div>
+        <div class="col-sm-6 col-lg-3 fact">
+          <div class="fact-icon">
+            <i class="ti-pencil-alt"></i>
+          </div>
+          <div class="fact-text">
+            <span class="goeducation-counter js-counter" data-from="0" data-to="<?php echo count($sections);?>" data-speed="60" data-refresh-interval="50"><?php echo count($sections);?></span>
+            <!-- <h2><?php echo count($sections);?></h2> -->
+            <p>Total Service</p>
+
           </div>
         </div>
-        <div class="col-md-6 mt-40">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="counter-list">
-                <div class="fact-icon">
-                  <i class="ti-pencil-alt"></i>
-                </div>  
-                <div class="fact-text">
-                  <span class="goeducation-counter js-counter" data-from="0" data-to="<?php echo count($sections);?>" data-speed="60" data-refresh-interval="50"><?php echo count($sections);?></span>
-                  <!-- <h2><?php echo count($sections);?></h2> -->
-                  <p>Total Service</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="counter-list">
-                <div class="fact-icon">
-                  <i class="ti-user"></i>
-                </div>
-                <div class="fact-text">
-                  <span class="goeducation-counter js-counter" data-from="0" data-to="<?php echo count($students);?>" data-speed="60" data-refresh-interval="50"><?php echo count($students);?></span>
-                  <!-- <h2><?php echo count($students);?></h2> -->
-                  <p>Total STUDENTS</p>
-                </div>
-              </div>
-            </div>
+        <div class="col-sm-6 col-lg-3 fact">
+          <div class="fact-icon">
+            <i class="ti-user"></i>
           </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="counter-list">
-                <div class="fact-icon">
-                  <i class="fa fa-trophy"></i>
-                </div>
-                <div class="fact-text">
-                  <span class="goeducation-counter js-counter" data-from="0" data-to="<?php echo count($teachers);?>" data-speed="60" data-refresh-interval="50"><?php echo count($teachers);?></span>
-                  <p>Award Received</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="counter-list">
-                <div class="fact-icon">
-                  <i class="ti-user"></i>
-                </div>
-                <div class="fact-text">
-                  <span class="goeducation-counter js-counter" data-from="0" data-to="<?php echo count($employees);?>" data-speed="60" data-refresh-interval="50">3000</span>
-                  <!-- <h2><?php echo count($employees);?></h2> -->
-                  <p>Selected students</p>
-                </div>
-              </div>
-            </div>
+          <div class="fact-text">
+            <span class="goeducation-counter js-counter" data-from="0" data-to="<?php echo count($students);?>" data-speed="60" data-refresh-interval="50"><?php echo count($students);?></span>
+            <!-- <h2><?php echo count($students);?></h2> -->
+            <p>Total STUDENTS</p>
           </div>
+        </div>
+        <div class="col-sm-6 col-lg-3 fact">
+          <div class="fact-icon">
+            <i class="fa fa-trophy"></i>
+            <!-- <i class="ti-briefcase"></i> -->
+          </div>
+          <div class="fact-text">
+            <span class="goeducation-counter js-counter" data-from="0" data-to="<?php echo count($teachers);?>" data-speed="60" data-refresh-interval="50"><?php echo count($teachers);?></span>
+            <!-- <h2></h2> -->
+
+            <p>Award Received</p>
+          </div>
+        </div>
+        
+        <div class="col-sm-6 col-lg-3 fact">
+          <div class="fact-icon">
+            <i class="ti-user"></i>
+          </div>
+          <div class="fact-text">
+            <span class="goeducation-counter js-counter" data-from="0" data-to="<?php echo count($employees);?>" data-speed="60" data-refresh-interval="50">3000</span>
+            <!-- <h2><?php echo count($employees);?></h2> -->
+            <p>Selected students</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -431,34 +456,14 @@
                       <?php }else{ ?>
                         <img src="<?php echo IMG_URL; ?>/default-user.png" alt="team Image" width="120" /> 
                       <?php } ?>
-                      <div class="team-social">
-                         <?php if($obj->facebook_url){ ?>
-                            <a class="social-icon"  target="_blank" href="<?php echo $obj->facebook_url; ?>"><i class="fa fa-facebook"></i></a>
-                            <?php } ?>
-                            <?php if($obj->linkedin_url){ ?>
-                            <a class="social-icon"  target="_blank" href="<?php echo $obj->linkedin_url; ?>"><i class="fa fa-linkedin"></i></a>
-                            <?php } ?>
-                            <?php if($obj->google_plus_url){ ?>
-                            <a class="social-icon" target="_blank" href="<?php echo $obj->google_plus_url; ?>"><i class="fa fa-google-plus"></i></a>
-                            <?php } ?>
-                          
-                            <?php if($obj->twitter_url){ ?>
-                            <a class="social-icon"  target="_blank" href="<?php echo $obj->twitter_url; ?>"><i class="fa fa-twitter"></i></a>
-                            <?php } ?>
-                            <?php if($obj->youtube_url){ ?>
-                            <a class="social-icon"  target="_blank" href="<?php echo $obj->youtube_url; ?>"><i class="fa fa-youtube"></i></a>
-                            <?php } ?>
-                           
-                          </div>
-                      <!-- <div class="normal-text">
+                     <!--  <img src="assets/images/team3.jpg" alt="team Image"> -->
+                      <div class="normal-text">
                         <h3 class="team-name"><?php echo $obj->name; ?></h3>
                         <span class="subtitle"><?php echo $obj->responsibility; ?></span>
-                      </div> -->
+                      </div>
                     </div>
                     <div class="team-content">
-                      <!-- <div class="overly-border"></div> -->
-                      <!-- <a href="javascript:void(0);" class="team-category"><?php echo $obj->name; ?></a> -->
-                      <span class="subtitle"><?php echo $obj->responsibility; ?></span>
+                      <div class="overly-border"></div>
                         <div class="display-table">
                           <div class="display-table-cell">
                           <h3 class="team-name"><a href="javascript:void(0);"><?php echo $obj->name; ?></a></h3>
@@ -468,7 +473,7 @@
                       <?php } ?>
                    
                          
-                          <!-- <div class="team-social">
+                          <div class="team-social">
                              <?php if($obj->facebook_url){ ?>
                                 <a class="social-icon"  target="_blank" href="<?php echo $obj->facebook_url; ?>"><i class="fa fa-facebook"></i></a>
                                 <?php } ?>
@@ -485,8 +490,11 @@
                                 <?php if($obj->youtube_url){ ?>
                                 <a class="social-icon"  target="_blank" href="<?php echo $obj->youtube_url; ?>"><i class="fa fa-youtube"></i></a>
                                 <?php } ?>
-                           
-                          </div> -->
+                            <!-- <a href="javascript:void(0);" class="social-icon"><i class="fa fa-facebook"></i></a>
+                            <a href="javascript:void(0);" class="social-icon"><i class="fa fa-google-plus"></i></a>
+                            <a href="javascript:void(0);" class="social-icon"><i class="fa fa-twitter"></i></a>
+                            <a href="javascript:void(0);" class="social-icon"><i class="fa fa-pinterest-p"></i></a> -->
+                          </div>
                           </div>
                         </div>
                       </div>
@@ -552,14 +560,45 @@
           <!-- <?php } ?> -->
           </div>
          <div class="text-center btn_view pb-4">
-                <!-- <a href="<?php echo site_url('teachers'); ?>" class="btn btn-sm btn-lng btn-outline-dark">View More</a> -->
-                <a href="<?php echo site_url('teachers'); ?>" class="btn btn-sm btn-lng btn-outline-dark">View More</a>
-              </div>
-            </div>
-         
+            <!-- <a href="<?php echo site_url('teachers'); ?>" class="btn btn-sm btn-lng btn-outline-dark">View More</a> -->
+            <a href="<?php echo site_url('teachers'); ?>" class="btn btn-sm btn-lng btn-outline-dark">View More</a>
+          </div>
         </div>
+         
+    </div>
 </section>
 <?php } ?>
+<!-- our testimonials -->
+<!--<section class="section-testimonial">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+        <div class="site-title">
+            <h3 class="title-section1">Our Reviews</h3>
+        </div>
+        <div id="owl-testimonials" class="owl-carousel">
+          <?php foreach($reviews as $key => $value) {?>
+            <div class="testimonial clearfix">
+              <?php if($value->photo==NULL){?>
+                <img src="assets/images/avatardefault.png" alt="photo" class="testimonial__img">
+              <?php }else{?>
+                <img src="<?php echo UPLOAD_PATH; ?>/review-photo/<?php echo $value->photo; ?>" alt="photo" class="testimonial__img">
+              <?php }?>
+                <div class="testimonial__info">
+                  <span class="testimonial__author"><?php echo $value->name;?></span>
+                  <!-- <span class="testimonial__company">Surat</span> -->
+<!--                </div>-->
+<!--                <div class="testimonial__body">-->
+<!--                  <p class="testimonial__text">“<?php echo $value->review;?>”</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--          <?php }?>-->
+         
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->
 <section class="contact-content-area" id="contact-section">
    <div class="go-heading go-lined site-title">
       <h3 class="title-section1">Contact Us</h3>
@@ -622,6 +661,11 @@
         </div>
     </div>
 </section>
+<div class="applyNowWrap">
+    <a href="<?php echo site_url('apply-online'); ?>">
+      <img src="assets/images/apply_online.png" alt="apply">
+    </a>
+  </div>
 <!-- <section class="content-area">
   <div class="front-contact">
     <div class="container">
@@ -718,7 +762,6 @@
                   </div>
                   
                 </div>
-
             <div id="portfolio" class="row wow fadeInDown" data-wow-delay="0.4s">
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 mix plots house">
                 <div class="portfolio-item">
@@ -814,13 +857,13 @@
   $("#career").validate();
  $(document).ready(function() {
           $('#founder-msg').owlCarousel({
-            loop: true,
-            margin: 30,
-            nav: true,
-            items: 1,
-            dots: true,
-            autoplay: true
-          });
+              loop: true,
+              margin: 30,
+              nav: true,
+              items: 1,
+              dots: true,
+              autoplay: true
+            });
           $('#notice-board').owlCarousel({
             items: 1,
             loop: true,
@@ -868,7 +911,7 @@
                   items: 1
               },
               576: {
-                  items: 1
+                  items: 2
               },
               991: {
                   items: 2
@@ -880,7 +923,6 @@
           });
           /*----------------our team------------*/
           $('#our-team').owlCarousel({
-            items: 4,
             loop: true,
             margin: 30,
             nav: true,
@@ -890,21 +932,69 @@
               0: {
                   items: 1
               },
-              576: {
-                  items: 1,
-                  dots :false
-              },
               320: {
                   items: 1,
                   dots :false
+              },
+              480: {
+                items: 2,
+                margin: 0
+              },
+              767:{
+                items: 2,
+                margin: 0
               },
               991: {
                   items: 4
               }
             }
           });
-
-         
-});
-
+/*-------------Testimonial------------------*/
+          $('#owl-testimonials').owlCarousel({
+            loop: true,
+            margin: 30,
+            autoplay: true,
+            responsive: {
+              0: {
+                  items: 1
+              },
+              480: {
+                  items: 1,
+                  dots :false
+              },
+              991: {
+                items: 2,
+                // dots :false,
+                nav:true
+              }
+            }
+          });
+          /*our gallery*/
+          $('#galleryId').owlCarousel({
+          
+            loop: true,
+            margin: 30,
+            nav: true,
+            dots: true,
+            autoplay: true,
+            responsive: {
+              0: {
+                  items: 1
+              },
+              320: {
+                  items: 1,
+                  dots :false
+              },
+              576: {
+                  items: 2
+              },
+              991: {
+                  items: 3
+              },
+              1200: {
+                  items: 4
+              }
+            }
+          });
+       }); 
  </script>

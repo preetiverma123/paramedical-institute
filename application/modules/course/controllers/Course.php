@@ -40,7 +40,7 @@ class Course extends MY_Controller {
     * ********************************************************** */
     public function index() {
 
-       
+        check_permission(VIEW);
         $this->data['courses'] = $this->courses->get_course_list();
       
         $this->data['list'] = TRUE;
@@ -60,7 +60,7 @@ class Course extends MY_Controller {
     public function add() {
 
      
-
+        check_permission(ADD);
         if ($_POST) {
             $this->_prepare_course_validation();
             if ($this->form_validation->run() === TRUE) {
@@ -103,7 +103,7 @@ class Course extends MY_Controller {
     * ********************************************************** */
     public function edit($id = null) {
 
-      
+      check_permission(EDIT);
 
         if(!is_numeric($id)){
             error($this->lang->line('unexpected_error'));
@@ -114,6 +114,7 @@ class Course extends MY_Controller {
             $this->_prepare_course_validation();
             if ($this->form_validation->run() === TRUE) {
                 $data = $this->_get_posted_course_data();
+              
                 $updated = $this->courses->update('courses', $data, array('id' => $this->input->post('id')));
 
                 if ($updated) {
@@ -161,7 +162,8 @@ class Course extends MY_Controller {
     public function view($course_id = null) {
 
        
-
+        check_permission(VIEW);
+        
         if(!is_numeric($course_id)){
              error($this->lang->line('unexpected_error'));
               redirect('course/index');
@@ -193,8 +195,8 @@ class Course extends MY_Controller {
       
 
         $this->form_validation->set_rules('name', $this->lang->line('name'), 'trim|required');
-
-        $this->form_validation->set_rules('description', $this->lang->line('description'), 'trim|required');
+        $this->form_validation->set_rules('class_description', $this->lang->line('class_description'), 'trim');
+        $this->form_validation->set_rules('description', $this->lang->line('description'), 'trim');
         $this->form_validation->set_rules('photo', $this->lang->line('photo'), 'trim|callback_photo');
     }
                         
@@ -265,8 +267,7 @@ class Course extends MY_Controller {
 
         $items[] = 'name';
         $items[] = 'description';
-        $items[] = 'photo';
-        $items[] = 'status';
+        $items[] = 'class_description';
 
         $data = elements($items, $_POST);
 
@@ -284,9 +285,9 @@ class Course extends MY_Controller {
         }
 
         if ($_FILES['photo']['name']) {
+
             $data['photo'] = $this->_upload_photo();
         }
-
         return $data;
     }
 
@@ -302,7 +303,7 @@ class Course extends MY_Controller {
     private function _upload_photo() {
 
         $prev_photo = $this->input->post('prev_photo');
-        
+     
         $photo = $_FILES['photo']['name'];
         $photo_type = $_FILES['photo']['type'];
         $return_photo = '';
@@ -347,7 +348,7 @@ class Course extends MY_Controller {
     * @return          : null 
     * ********************************************************** */
     public function delete($id = null) {
-
+        check_permission(DELETE);
         
         
         if(!is_numeric($id)){

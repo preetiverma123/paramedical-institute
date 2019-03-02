@@ -3,28 +3,34 @@
 		<div class="row">
 			<div class="col-md-6">
 				<div class="course-head">
-					<h3><i class="fa fa-graduation-cap rs-animation-scale-up"></i>JEE(main + Advance)</h3>
+					<h3><i class="fa fa-graduation-cap rs-animation-scale-up"></i><?php echo(!empty($courseDetails->name)?$courseDetails->name:'');?></h3>
 				</div>
 				<div class="course-content">
+                    <p>
+                        <?php echo(!empty($courseDetails->class_description)?'('.$courseDetails->class_description.')':'');?>
+                    </p>
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut faucibus massa. Integer a ante eu quam lobortis egestas. Suspendisse id magna nibh. Sed varius condimentum sem nec lobortis. Suspendisse molestie ligula ac ligula laoreet interdum. Duis mollis mi fermentum, blandit sem id, ultricies magna. Suspendisse rhoncus nisi id bibendum feugiat. Nunc volutpat mi nibh, ac viverra ipsum dignissim quis. Aliquam condimentum dapibus rhoncus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+						<?php echo(!empty($courseDetails->description)?htmlspecialchars_decode($courseDetails->description):'');?>
 					</p>
 				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="course-image">
-					<img src="assets/images/course-image.jpg" alt="course">
+                    <?php if(!empty($courseDetails->photo)){?>
+					<img src="<?php echo UPLOAD_PATH;?>/course-photo/<?php echo $courseDetails->photo;?>" alt="course">
+                    <?php }?>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
-<section class="certified-course">
+<!--<section class="certified-course">
 	<div class="rs-services rs-services-style1">
 		
             <div class="container">
             	<div class="course-head">
-					<h3 class="text-center"><span style="color: #f3861f;">Benefits</span> of Course</h3>
+					<h3 class="text-center"><span style="color: #f33c1f;">Benefits</span> of Course</h3>
 				</div>
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-6 marginBox">
@@ -34,7 +40,7 @@
                     	    </div>
                     	    <div class="services-desc">
                     	        <h4 class="services-title">Trending Courses</h4>
-                    	        <p>Lorem ipsum dolor sit amet Sed nec molestie justo</p>
+                    	        <p>Explore the best</p>
                     	    </div>
                     	</div>
                     </div>
@@ -44,7 +50,7 @@
                     	        <i class="fa fa-book rs-animation-scale-up"></i>
                     	    </div>
                     	    <div class="services-desc">
-                    	        <h4 class="services-title">Books &amp; Liberary</h4>
+                    	        <h4 class="services-title">Books &amp; Library</h4>
                     	        <p>Lorem ipsum dolor sit amet Sed nec molestie justo</p>
                     	    </div>
                     	</div>
@@ -74,4 +80,4 @@
                 </div>
             </div>
         </div>
-</section>
+</section>-->

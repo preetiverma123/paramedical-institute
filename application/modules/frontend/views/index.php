@@ -181,7 +181,7 @@
                                         echo 'Director Name' ?> <span class="required">*</span>
                                     <?php } elseif($page->page_slug=='executive-message'){
 
-                                         echo 'Executive Name' ?> <span class="required">*</span>
+                                         echo 'Principal Name' ?> <span class="required">*</span>
                                     <?php
                                     }
                                     else if($page->page_slug=='origin'){
@@ -270,7 +270,7 @@
                                     {
                                         echo 'Director Name'; 
                                     }elseif ($page->page_slug=='executive-message') {
-                                        echo 'Executive Name';
+                                        echo 'Principal Name';
                                     }
                                     elseif ($page->page_slug=='origin') {
                                         echo 'Origin';

@@ -7,10 +7,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @type            : Class
  * @class name      : Web
  * @description     : Manage frontend website.  
- * @author          : Codetroopers Team 	
+ * @author          : Codetroopers Team     
  * @url             : https://themeforest.net/user/codetroopers      
- * @support         : yousuf361@gmail.com	
- * @copyright       : Codetroopers Team	 	
+ * @support         : yousuf361@gmail.com   
+ * @copyright       : Codetroopers Team     
  * ********************************************************** */
 
 class Web extends CI_Controller {
@@ -32,6 +32,7 @@ class Web extends CI_Controller {
         $this->data['events'] = $this->web->get_event_list(3);
         $this->data['teachers'] = $this->web->get_teacher_list();
         $this->data['galleries'] = $this->web->get_list('galleries', array('status'=>1, 'is_view_on_web'=>1), '', '', '', 'id', 'DESC');
+        $this->data['courses'] = $this->web->get_list('courses', array('status' => 1), '', '', '', 'id', 'ASC');
         $query = $this->db->query("SELECT * from competition_results");
         $results= $query->result();
             
@@ -91,6 +92,7 @@ class Web extends CI_Controller {
     public function index() {
 
         $this->data['sliders'] = $this->web->get_list('sliders', array('status' => 1), '', '', '', 'id', 'ASC');
+
         $this->data['director_message'] = $this->web->get_single('pages', array('status' => 1, 'page_slug'=>'director-message'), '', '', '', 'id', 'ASC');
 
         $this->data['executive_message'] = $this->web->get_single('pages', array('status' => 1, 'page_slug'=>'executive-message'), '', '', '', 'id', 'ASC');
@@ -99,6 +101,7 @@ class Web extends CI_Controller {
         $this->data['events'] = $this->web->get_event_list(3);
         $this->data['teachers'] = $this->web->get_teacher_list();
         $this->data['galleries'] = $this->web->get_list('galleries', array('status'=>1, 'is_view_on_web'=>1), '', '', '', 'id', 'DESC');
+        $this->data['reviews'] = $this->web->get_list('reviews', array('status' => 1), '', '', '', 'id', 'ASC');
 
         ///StudentsCount
         $this->db->select('*');
@@ -165,9 +168,9 @@ class Web extends CI_Controller {
         $this->layout->view('news', $this->data);
     }
 
-    public function competition_results() {
+    public function competition_results($type) {
 
-         $query = $this->db->query("SELECT * from competition_results");
+        $query = $this->db->query("SELECT * from competition_results where achiever_type = '".$type."'");
         $results= $query->result();
             
 
@@ -400,9 +403,9 @@ class Web extends CI_Controller {
         $this->layout->view('terms', $this->data);
     }
 
-    public function courses() {
+    public function courses($id) {
 
-       
+       $this->data['courseDetails'] = $this->web->get_single('courses', array('status' => 1, 'id'=>$id), '', '', '', 'id', 'ASC');
         $this->data['list'] = TRUE;
         $this->layout->title('course' . ' | ' . SMS);
         $this->layout->view('course', $this->data);
@@ -443,6 +446,15 @@ class Web extends CI_Controller {
 
                 $insert_id = $this->db->insert('applications', $data);
                 if ($insert_id) {
+
+                    $courseDetails = $this->web->get_single('courses', array('status' => 1,'id'=>$data['course']));
+
+                    $email = 'iamansoni080@gmail.com';
+                    $subject = "Online Application Submission: Origin Career Institute";
+                    $message="Name:".$data['name']." <br><br>;Father's Name:".$data['fathers_name']." <br><br>;Phone:".$data['phone']." <br><br>;Email:".$data['email']." <br><br>;Email:".$courseDetails->name;
+                    $attachment = NULL;
+
+                    $this->sendEmail($email,$subject,$message,$attachment);
                     success($this->lang->line('insert_success'));
                     redirect(site_url());
                 } else {
@@ -527,6 +539,11 @@ class Web extends CI_Controller {
       // $this->load->model('Career_Model', 'career', true);
 
         if ($_POST) {
+
+            if ($_FILES['resume']['name']) {
+                $data['resume'] = $this->_upload_resume();
+
+            }
             $this->_prepare_career_validation();
 
             if ($this->form_validation->run() === TRUE) {
@@ -535,10 +552,10 @@ class Web extends CI_Controller {
                 $items[] = 'name';
                 $items[] = 'email';
                 $items[] = 'phone';
-                $items[] = 'resume';
+                /*$items[] = 'resume';*/
 
                 $data = elements($items, $_POST);
-               
+              
                 if ($_FILES['resume']['name']) {
                     $data['resume'] = $this->_upload_resume();
                 }
@@ -546,6 +563,14 @@ class Web extends CI_Controller {
 
                 $insert_id = $this->db->insert('career', $data);
                 if ($insert_id) {
+
+                    $email = 'iamansoni080@gmail.com';
+                    $subject = "Career Submission: Origin Career Institute";
+                    $message="Name:".$data['name']." <br><br>;Phone:".$data['phone']." <br><br>;Email:".$data['email'];
+                    $attachment = $data['resume'];
+
+                    $this->sendEmail($email,$subject,$message,$attachment);
+
                     success($this->lang->line('insert_success'));
                     redirect(site_url());
                 } else {
@@ -603,6 +628,45 @@ class Web extends CI_Controller {
         return $return_resume;
     }
 
+
+    
+        public function sendEmail($email,$subject,$message,$attachment)
+            {
+            $setting = $this->web->get_single('settings', array('status' => 1));
+
+            $config = Array(
+              'protocol' => 'smtp',
+              'smtp_host' => 'ssl://smtp.googlemail.com',
+              'smtp_port' => 465,
+              'smtp_user' => $setting->email, 
+              'smtp_pass' => $setting->email_password, 
+              'mailtype' => 'html',
+              'charset' => 'iso-8859-1',
+              'wordwrap' => TRUE
+            );
+
+
+            $this->load->library('email', $config);
+            $this->email->set_newline("\r\n");
+            $this->email->from($setting->email);
+            $this->email->to($email);
+            $this->email->subject($subject);
+            $this->email->message($message);
+            if(!empty($attachment)){
+
+                $this->email->attach(site_url().'/assets/uploads/resume/'.$attachment);
+            }
+            if($this->email->send())
+                {
+                    echo 'Email send.';
+                }
+            else
+                {
+                    show_error($this->email->print_debugger());
+                }
+
+        }
+
     private function _send_email() {
 
         $this->load->library('email');
@@ -651,7 +715,7 @@ class Web extends CI_Controller {
         $this->form_validation->set_rules('phone', $this->lang->line('phone'), 'trim|required');
         $this->form_validation->set_rules('email', $this->lang->line('email'), 'trim|required|valid_email');
 //|callback_email,|callback_resume
-        $this->form_validation->set_rules('resume', $this->lang->line('resume'), 'trim|required');
+        /*$this->form_validation->set_rules('resume', $this->lang->line('resume'), 'trim|required');*/
 
     }
 

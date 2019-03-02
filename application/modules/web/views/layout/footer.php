@@ -2,9 +2,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-5 col-md-5">
-                <h3 class="footer-title"><?php echo 'Origin Career Institute' ?></h3>
+                <h3 class="footer-title"><?php echo 'National Institute Of Paramedicals' ?></h3>
                 <div class="footer-text about_description">
-                    <?php echo htmlspecialchars_decode(stripslashes($about->page_description)); ?>
+                    <?php $this->load->helper('text');
+                    echo word_limiter(strip_tags($about->page_description),10); ?>
                 </div>
                 <div class="q-links">
                 <h3 class="footer-title"><?php echo $this->lang->line('social_link'); ?></h3>
@@ -52,7 +53,7 @@
                     <li><i class="fa fa-caret-right icom" aria-hidden="true"></i><a href="http://www.goeducation.in" target="_blank">www.goeducation.in</a> </li>
                     <li><i class="fa fa-caret-right icom" aria-hidden="true"></i><a href="http://www.cbse.nic.in" target="_blank">www.cbse.nic.in</a> </li>
                     <li><i class="fa fa-caret-right icom" aria-hidden="true"></i><a href="http://www.ncte-india.org" target="_blank">www.ncte-india.org</a></li>
-                    <li><i class="fa fa-caret-right icom" aria-hidden="true"></i><a href="http://www.biharboard.bih.nic.in" target="_blank">www.biharboard.bih.nic.in</a></li>
+                    <li><i class="fa fa-caret-right icom" aria-hidden="true"></i><a href="http://www.biharboard.bih.nic.in" target="_blank">www.biharboaworrd.bih.nic.in</a></li>
                     <li><i class="fa fa-caret-right icom" aria-hidden="true"></i><a href="http://www.wikipedia.org" target="_blank">www.wikipedia.org</a> </li>
                                    
                 </ul>
@@ -79,7 +80,7 @@
     </div>
     <div class="footer-bottom">
         <div class="col-xl-12">
-            <div class="copyright">Copyright © 2018</div>
+            <div class="copyright">Copyright © <?php echo date('Y');?> | Developed By <a href="https://igniterpro.com" target="_blank">Igniterpro</a></div>
         </div>
     </div>
 </footer>
